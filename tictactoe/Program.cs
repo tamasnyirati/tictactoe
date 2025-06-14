@@ -6,20 +6,29 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            string notCorrect = "How big field do you want to play? (3-9)";
+            string notCorrect = "How big field do you want to play? (3-9) ";
             Console.WriteLine("TicTacToe Console Game");
             Console.Write(notCorrect);
             string value = Console.ReadLine();
             int result = Convert.ToInt32(value);
-            if (value == null)
-            {
-                Console.WriteLine(notCorrect);
-            }
+            int[] fieldArr = new int[result];
+
+            if (value == null) { Console.WriteLine(notCorrect); }
+            else if (result < 3) { Console.WriteLine(notCorrect); }
+            else if (result > 9) { Console.WriteLine(notCorrect); }
             else
             {
-                 if (result < 3) { Console.WriteLine(notCorrect); }
+                for (int i = 0; i < result; i++)
+                {
+                    Console.WriteLine('*');
+                    for (int j = 0; j < result; j++)
+                    {
+                        Console.WriteLine(' ');
+                    }
+
+                }
             }
-            
         }
     }
+
 }
