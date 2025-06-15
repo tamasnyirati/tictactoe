@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace MyApp
 {
@@ -9,26 +10,39 @@ namespace MyApp
             string notCorrect = "How big field do you want to play? (3-9) ";
             Console.WriteLine("TicTacToe Console Game");
             Console.Write(notCorrect);
-            string value = Console.ReadLine();
-            int result = Convert.ToInt32(value);
-            int[] fieldArr = new int[result];
+           
+            int size = Convert.ToInt32(Console.ReadLine());
 
-            if (value == null) { Console.WriteLine(notCorrect); }
-            else if (result < 3) { Console.WriteLine(notCorrect); }
-            else if (result > 9) { Console.WriteLine(notCorrect); }
+            if (size < 3 || size > 9)
+            {
+                Console.WriteLine(notCorrect);
+            }
+            
             else
             {
-                for (int i = 0; i < result; i++)
+                char [,] field = new char[size, size];
+                
+                for (int i = 0; i < size; i++)
                 {
-                    Console.WriteLine('*');
-                    for (int j = 0; j < result; j++)
+                    for (int j = 0; j < size; j++)
                     {
-                        Console.WriteLine(' ');
+                        field[i, j] = ' ';
                     }
+                }
 
+                //draw field
+                for (int i = 0;i < size; i++)
+                {
+                    for(int j = 0;j < size; j++)
+                    {
+                        Console.Write($"| {field[i, j]} ");
+                    }
+                    Console.WriteLine('|');
                 }
             }
         }
     }
 
 }
+
+
